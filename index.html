@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sri Anjaneya Fertilizer, Pesticides and Seeds</title>
+<style>
+:root{--g:#2F6B33;--g2:#4C8C3F;--gl:#EEF3E4;--wheat:#D9B25C;--ink:#22301E;--line:#DDE3CE;--bad:#B23B3B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit;margin:0;padding:0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#FBFAF4;color:var(--ink);min-height:100%}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--gl:#123018;--ink:#EDF3EC;--line:#2E4030}body{background:#0F1712}}
+:root[data-theme="dark"]{--gl:#123018;--ink:#EDF3EC;--line:#2E4030}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{background:var(--g);color:#fff;position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top,0px)}
+.hd{display:flex;align-items:center;gap:10px;padding:12px 16px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand .logo{width:36px;height:36px;border-radius:8px;background:#fff;color:var(--g);display:flex;align-items:center;justify-content:center;font-size:20px}
+nav{display:flex;gap:14px;align-items:center;font-size:.95rem}
+nav a{opacity:.9;padding:4px 2px;border-bottom:3px solid transparent}
+nav a.navactive{opacity:1;border-bottom-color:#fff;font-weight:600}
+.cartlink{background:rgba(255,255,255,.15);padding:6px 10px;border-radius:6px}
+main{min-height:70vh}
+.hero{background:linear-gradient(160deg,var(--gl) 0%,#F4ECD4 100%);padding:0;border-bottom:3px solid var(--wheat);overflow:hidden}
+.hero-img{width:100%;max-height:380px;object-fit:cover;display:block}
+.hero-inner{padding:28px 16px}
+.hero h1{font-size:1.7rem;margin-bottom:8px;color:var(--g)}
+.hero p{max-width:60ch;color:var(--ink);opacity:.85;margin-bottom:16px}
+.btn{display:inline-block;background:var(--g);color:#fff;border:none;padding:10px 16px;border-radius:6px;font-size:.95rem;cursor:pointer;font-family:inherit}
+.btn.outline{background:transparent;border:1px solid var(--g);color:var(--g)}
+.btn.bad{background:var(--bad)}
+.btn:disabled{background:#aab5ab;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.notice{background:#FFF6DE;border:1px solid #E9D48B;padding:10px 14px;border-radius:6px;font-size:.9rem;margin:16px 0}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.cat{background:var(--gl);border-radius:8px;padding:18px;text-align:center;font-weight:600;border-bottom:3px solid var(--wheat)}
+.sec{padding:24px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.thumb{height:210px;border-radius:6px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+.badge{font-size:.78rem;font-weight:600;padding:2px 0}
+.badge.in{color:var(--g)}
+.badge.out{color:var(--bad)}
+.price{font-weight:700}
+.muted{opacity:.7;font-size:.85rem}
+.controls{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.controls input,.controls select,input,select,textarea{padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:.95rem;background:transparent;color:var(--ink)}
+.controls input{flex:1;min-width:160px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:5px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:1rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px}
+.formgrid label{display:flex;flex-direction:column;gap:4px;font-size:.85rem}
+.formgrid .full{grid-column:1/-1}
+.admin{display:grid;grid-template-columns:170px 1fr;min-height:80vh}
+.side{background:var(--gl);padding:20px 12px;display:flex;flex-direction:column;gap:4px}
+.side a{padding:8px 10px;border-radius:6px;font-size:.9rem}
+.side a.active{background:var(--g);color:#fff}
+.stat{background:var(--gl);border-radius:8px;padding:16px;flex:1;min-width:140px}
+.stat b{font-size:1.4rem;display:block}
+.modalOverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modalBox{background:#fff;border-radius:10px;padding:24px;max-width:320px;width:100%;text-align:center}
+:root[data-theme="dark"] .modalBox,:root:not([data-theme="light"]) .modalBox{background:#1a241a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .modalBox{background:#1a241a}}
+footer{background:var(--gl);padding:22px 16px;text-align:center;font-size:.85rem;opacity:.8}
+@media(max-width:640px){.admin{grid-template-columns:1fr}.side{flex-direction:row;overflow-x:auto}.formgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="callModalOverlay" class="modalOverlay">
+  <div class="modalBox">
+    <h2 style="margin-bottom:10px">Call the Shop?</h2>
+    <p class="muted" style="margin-bottom:18px">You'll be redirected to your phone's dialer to place the call.</p>
+    <div class="row" style="justify-content:center">
+      <button class="btn" onclick="doCallNow()">📞 Call Now</button>
+      <button class="btn outline" onclick="closeCallModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+<script>
+/* ============ CONFIG — defaults & fallback details ============ */
+const CONFIG = {
+  SHOP_NAME: "Sri Anjaneya Fertilizer, Pesticides and Seeds",
+  WHATSAPP_NUMBER: "917095891270",      // digits only, country code first — used only to build the order link, never shown as text
+  SHOP_PHONE_NUMBER: "917095891270",    // digits only — used only inside the Call button, never shown as text
+  SHOP_ADDRESS: "Near Old Bus Stand, Main Road, Agricultural Market",
+  SHOP_MAP_LINK: "https://maps.google.com/?q=Sri+Anjaneya+Fertilizers"
+};
+
+// Automatic API base detection:
+// 1. If explicit override window.SA_API_BASE is set, use it.
+// 2. If opened from localhost:4000 or http://<IP>:4000 (served by backend), use relative ''
+// 3. If opened from file://, default to 'http://localhost:4000'
+// 4. If served from separate frontend port, target same host on port 4000
+const API_BASE = window.SA_API_BASE || (
+  location.protocol === 'file:'
+    ? 'http://localhost:4000'
+    : (location.port === '4000' ? '' : `${location.protocol}//${location.hostname}:4000`)
+);
+
+function resolveImgUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('data:') || url.startsWith('http://') || url.startsWith('https://')) return url;
+  return API_BASE + (url.startsWith('/') ? '' : '/') + url;
+}
+
+const CATS = ["Fertilizers","Pesticides","Seeds"];
+const ICON = {Fertilizers:"🌱",Pesticides:"🛡️",Seeds:"🌾"};
+const LS = {C:"sa_cart"};
+const get = (k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
+const set = (k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const esc = s => (s+"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+const rs = n => "₹"+Number(n).toLocaleString('en-IN');
+
+let STATE = {
+  products: [],
+  settings: {
+    shopName: CONFIG.SHOP_NAME,
+    phone: CONFIG.SHOP_PHONE_NUMBER,
+    whatsapp: CONFIG.WHATSAPP_NUMBER,
+    address: CONFIG.SHOP_ADDRESS,
+    mapLink: CONFIG.SHOP_MAP_LINK,
+    heroImage: '/uploads/hero-default.jpg',
+    logo: '/uploads/logo-default.png'
+  },
+  orders: [],
+  latestOrder: null,
+  loaded: false
+};
+
+const settings = () => STATE.settings || {};
+const products = () => STATE.products || [];
+const orders = () => STATE.orders || [];
+const cart = () => get(LS.C, {});
+const saveCart = c => set(LS.C, c);
+
+async function apiFetch(endpoint, options = {}) {
+  const url = `${API_BASE}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+  const token = sessionStorage.getItem("sa_token");
+  const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  
+  const res = await fetch(url, { ...options, headers });
+  if (res.status === 401 && (endpoint.startsWith('/api/admin') || options.authRequired)) {
+    sessionStorage.removeItem("sa_token");
+    sessionStorage.removeItem("sa_admin_in");
+  }
+  return res;
+}
+
+async function loadStoreData(force = false) {
+  try {
+    const [pRes, sRes] = await Promise.all([
+      apiFetch('/api/products?t=' + Date.now()),
+      apiFetch('/api/settings?t=' + Date.now())
+    ]);
+    if (pRes.ok) STATE.products = await pRes.json();
+    if (sRes.ok) {
+      const s = await sRes.json();
+      if (s && s.shopName) STATE.settings = s;
+    }
+    STATE.loaded = true;
+  } catch (err) {
+    console.warn('Network error loading store data:', err);
+  }
+}
+
+async function loadOrders() {
+  if (!isAdmin()) return;
+  try {
+    const res = await apiFetch('/api/orders', { authRequired: true });
+    if (res.ok) STATE.orders = await res.json();
+  } catch (err) {
+    console.warn('Network error loading orders:', err);
+  }
+}
+
+function ckey(id,mode){return id+'|'+mode}
+function ckeyParse(key){const i=key.lastIndexOf('|');if(i<0)return{id:key,mode:'order'};return {id:key.slice(0,i),mode:key.slice(i+1)}}
+
+function validCartItems(){
+  const c=cart(); const p=products();
+  const items=[]; let changed=false;
+  for(const key in c){
+    const {id,mode}=ckeyParse(key);
+    const prod=p.find(x=>String(x.id)===String(id));
+    if(!prod || !c[key] || c[key]<=0){ delete c[key]; changed=true; continue; }
+    items.push({key,mode,prod,qty:c[key]});
+  }
+  if(changed) saveCart(c);
+  return items;
+}
+const cartCount = ()=>validCartItems().reduce((s,i)=>s+i.qty,0);
+const isAdmin = ()=>Boolean(sessionStorage.getItem("sa_token"));
+
+function nav(hash){location.hash=hash}
+function confirmCall(){document.getElementById('callModalOverlay').style.display='flex';}
+function closeCallModal(){document.getElementById('callModalOverlay').style.display='none';}
+function doCallNow(){
+  const s=settings();
+  window.location.href = 'tel:'+(s.phone||CONFIG.SHOP_PHONE_NUMBER);
+  closeCallModal();
+}
+
+async function pickImage(inputEl,previewId,hiddenId,type='img'){
+  const file=inputEl.files[0]; if(!file) return;
+  const prevEl=document.getElementById(previewId);
+  if(prevEl) prevEl.innerHTML='<span class="muted" style="font-size:0.85rem">⏳ Uploading image to server...</span>';
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const token = sessionStorage.getItem("sa_token");
+    const headers = {};
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    const res = await fetch(`${API_BASE}/api/upload?type=${encodeURIComponent(type)}`, {
+      method: 'POST',
+      body: formData,
+      headers
+    });
+    const json = await res.json();
+    if (res.ok && json.url) {
+      document.getElementById(hiddenId).value = json.url;
+      const cleanUrl = resolveImgUrl(json.url) + '?v=' + Date.now();
+      if(prevEl) prevEl.innerHTML = `<img src="${esc(cleanUrl)}" style="max-width:160px;max-height:160px;border-radius:6px;display:block">`;
+    } else {
+      alert(json.error || 'Failed to upload image. Please try again.');
+      if(prevEl) prevEl.innerHTML = '';
+    }
+  } catch(err) {
+    console.error('Image upload failed:', err);
+    alert('Image upload failed. Ensure the backend server is running.');
+    if(prevEl) prevEl.innerHTML = '';
+  }
+}
+
+function togglePwd(id,btn){
+  const el=document.getElementById(id);
+  el.type = el.type==='password' ? 'text' : 'password';
+  btn.textContent = el.type==='password' ? '👁️ Show' : '🙈 Hide';
+}
+
+function header(){
+  const s=settings();
+  const logoSrc = resolveImgUrl(s.logo);
+  const logoHtml = logoSrc?`<img src="${esc(logoSrc)}" style="width:36px;height:36px;border-radius:8px;object-fit:cover">`:`<span class="logo">🌿</span>`;
+  const h = (location.hash||'#/home').slice(1).split('?')[0];
+  const isHome = h==='/home'||h===''||h==='/';
+  const isProducts = h.startsWith('/products')||h.startsWith('/product/');
+  const isContact = h==='/contact';
+  const isCart = h==='/cart'||h.startsWith('/checkout')||h.startsWith('/confirmation');
+  const isAdm = h.startsWith('/admin');
+  const cls = on => on?'navactive':'';
+  return `<header><div class="hd wrap">
+    <a href="#/home" class="brand">${logoHtml} ${esc(s.shopName||CONFIG.SHOP_NAME)}</a>
+    <nav>
+      <a href="#/home" class="${cls(isHome)}">Home</a><a href="#/products" class="${cls(isProducts)}">Products</a><a href="#/contact" class="${cls(isContact)}">Contact</a>
+      <a href="#/cart" class="cartlink ${cls(isCart)}">Cart (${cartCount()})</a>
+      <a href="${isAdmin()?'#/admin/dashboard':'#/admin/login'}" class="${cls(isAdm)}">Admin</a>
+    </nav>
+  </div></header>`;
+}
+
+function footer(){
+  const s=settings();
+  return `<footer>${esc(s.shopName||CONFIG.SHOP_NAME)} &middot; No Home Delivery — Customer Collection from Shop &middot; <a href="#/contact">Contact</a></footer>`;
+}
+
+function layout(inner){return header()+`<main>${inner}</main>`+footer();}
+
+function productCard(p){
+  const inStock = p.stock>0;
+  const thumb = p.image?`<div class="thumb" style="background-image:url('${esc(resolveImgUrl(p.image))}');background-size:cover;background-position:center"></div>`:`<div class="thumb">${ICON[p.category]||"📦"}</div>`;
+  let btns='';
+  if(inStock) btns+=`<button class="btn" style="flex:1" onclick="quickAdd('${p.id}','order')">Add to Cart</button>`;
+  if(p.bookable) btns+=`<button class="btn outline" style="flex:1" onclick="quickAdd('${p.id}','book')">Book</button>`;
+  if(!inStock && !p.bookable) btns=`<button class="btn" disabled style="flex:1">Out of Stock</button>`;
+  return `<div class="card">
+    <a href="#/product/${p.id}" style="text-decoration:none">
+      ${thumb}
+      <div style="font-weight:700;margin-top:6px">${esc(p.name)}</div>
+    </a>
+    <div class="muted">${esc(p.brand)} · ${esc(p.pack)}</div>
+    <div class="muted">⭐ ${p.rating}</div>
+    <div class="price">${rs(p.price)}</div>
+    <div class="badge ${inStock?'in':'out'}">${inStock?'🟢 In Stock':'🔴 Out of Stock'}</div>
+    <div class="row" style="margin-top:auto">${btns}</div>
+  </div>`;
+}
+
+function quickAdd(id,mode){
+  const c=cart(); const key=ckey(id,mode);
+  c[key]=(c[key]||0)+1;
+  if(mode==='order'){ const p=products().find(x=>String(x.id)===String(id)); if(p && c[key]>p.stock) c[key]=p.stock; }
+  saveCart(c); render();
+}
+
+/* ---------- customer views ---------- */
+function viewHome(){
+  const s=settings();
+  const pop = products().slice(0,4).map(productCard).join("");
+  const heroSrc = resolveImgUrl(s.heroImage);
+  return layout(`
+    <div class="hero">
+      ${heroSrc?`<img class="hero-img" src="${esc(heroSrc)}" alt="Shop photo">`:''}
+      <div class="hero-inner wrap">
+        <h1>Welcome to ${esc(s.shopName||CONFIG.SHOP_NAME)}</h1>
+        <p>Your local shop for fertilizers, pesticides and seeds. Browse our stock, place an order, and collect it from the shop — simple and fast.</p>
+        <div class="row">
+          <button class="btn" onclick="nav('#/products')">Shop Now</button>
+          <button class="btn outline" onclick="confirmCall()">📞 Call Us</button>
+          <a class="btn outline" href="${esc(s.mapLink||CONFIG.SHOP_MAP_LINK)}" target="_blank" rel="noopener">📍 Shop Location</a>
+        </div>
+      </div>
+    </div>
+    <div class="sec wrap">
+      <div class="notice">📍 No Home Delivery — Customer Collection from Shop only. Cash payment at pickup.</div>
+      <div class="cats">
+        ${CATS.map(c=>`<a class="cat" href="#/products?cat=${c}">${ICON[c]} ${c}</a>`).join("")}
+      </div>
+      <h2 style="margin:18px 0 12px">Popular Products</h2>
+      <div class="grid">${pop||'<p class="muted">No products yet.</p>'}</div>
+    </div>`);
+}
+
+function viewProducts(params){
+  const cat = params.get('cat')||'All';
+  const q = (params.get('q')||'').toLowerCase();
+  let list = products();
+  if(cat!=='All') list = list.filter(p=>p.category===cat);
+  if(q) list = list.filter(p=>p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q));
+  return layout(`<div class="sec wrap">
+    <h1>Products</h1>
+    <div class="controls">
+      <input id="searchbox" placeholder="Search products..." value="${esc(q)}" onkeyup="if(event.key==='Enter')doSearch()">
+      <select onchange="location.hash='#/products?cat='+this.value">
+        <option ${cat==='All'?'selected':''} value="All">All</option>
+        ${CATS.map(c=>`<option ${cat===c?'selected':''} value="${c}">${c}</option>`).join("")}
+      </select>
+      <button class="btn" onclick="doSearch()">Search</button>
+    </div>
+    <div class="grid">${list.map(productCard).join("")||'<p class="muted">No products found.</p>'}</div>
+  </div>`);
+}
+
+function doSearch(){
+  const q = document.getElementById('searchbox').value;
+  const cat = new URLSearchParams((location.hash.split('?')[1]||'')).get('cat')||'All';
+  location.hash = `#/products?cat=${cat}&q=${encodeURIComponent(q)}`;
+}
+
+function viewProductDetails(m){
+  const p = products().find(x=>String(x.id)===String(m[1]));
+  if(!p) return layout(`<div class="sec wrap">Product not found. <a href="#/products">Back to products</a></div>`);
+  const inStock = p.stock>0;
+  const imgSrc = resolveImgUrl(p.image);
+  const thumb = imgSrc?`<div class="thumb" style="width:320px;height:320px;background-image:url('${esc(imgSrc)}');background-size:cover;background-position:center"></div>`:`<div class="thumb" style="width:320px;height:320px;font-size:5.5rem">${ICON[p.category]||"📦"}</div>`;
+  return layout(`<div class="sec wrap">
+    <a href="#/products">&larr; Back</a>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:12px">
+      ${thumb}
+      <div style="flex:1;min-width:220px">
+        <h1>${esc(p.name)}</h1>
+        <p class="muted">${esc(p.brand)} · ${esc(p.category)} · ${esc(p.pack)}</p>
+        <p class="muted">⭐ ${p.rating}</p>
+        <p class="price" style="font-size:1.3rem;margin:8px 0">${rs(p.price)}</p>
+        <div class="badge ${inStock?'in':'out'}">${inStock?'🟢 In Stock':'🔴 Out of Stock'}</div>
+        <p style="margin:10px 0">${esc(p.desc||p.description||"")}</p>
+        ${inStock?`
+        <div class="qty">
+          <button onclick="stepQty(-1)">−</button>
+          <span id="pdqty">1</span>
+          <button onclick="stepQty(1,${p.stock})">+</button>
+        </div>
+        <div class="row">
+          <button class="btn" onclick="addWithQty('${p.id}','order',${p.stock})">Add to Cart</button>
+          ${p.bookable?`<button class="btn outline" onclick="addWithQty('${p.id}','book',0)">Book This Item</button>`:''}
+        </div>`
+        : p.bookable ? `<button class="btn" onclick="quickAdd('${p.id}','book')">Book This Item</button>`
+        : `<button class="btn" disabled>Out of Stock</button>`}
+      </div>
+    </div>
+  </div>`);
+}
+
+function stepQty(d,max){
+  const el=document.getElementById('pdqty');
+  let v=(+el.textContent)+d;
+  if(v<1)v=1; if(max&&v>max)v=max;
+  el.textContent=v;
+}
+
+function addWithQty(id,mode,max){
+  const q=+document.getElementById('pdqty').textContent;
+  const c=cart(); const key=ckey(id,mode);
+  let v=(c[key]||0)+q;
+  if(mode==='order' && max) v=Math.min(v,max);
+  c[key]=v;
+  saveCart(c); nav('#/cart');
+}
+
+function viewCart(){
+  const items = validCartItems();
+  const total = items.filter(i=>i.mode==='order').reduce((s,i)=>s+i.prod.price*i.qty,0);
+  return layout(`<div class="sec wrap">
+    <h1>Your Cart</h1>
+    ${items.length===0?'<p class="muted">Cart is empty. <a href="#/products">Browse products</a></p>':`
+    <table><thead><tr><th>Product</th><th>Pack</th><th>Price</th><th>Qty</th><th>Subtotal</th><th></th></tr></thead><tbody>
+    ${items.map(i=>`<tr>
+      <td>${esc(i.prod.name)}${i.mode==='book'?' <span class="badge out" style="font-size:.7rem">BOOKING</span>':''}</td>
+      <td>${esc(i.prod.pack)}</td><td>${rs(i.prod.price)}</td>
+      <td><div class="qty"><button onclick="cartQty('${i.key}',-1)">−</button>${i.qty}<button onclick="cartQty('${i.key}',1,${i.mode==='order'?i.prod.stock:0})">+</button></div></td>
+      <td>${i.mode==='order'?rs(i.prod.price*i.qty):'To confirm'}</td>
+      <td><button class="btn bad" onclick="cartRemove('${i.key}')">Remove</button></td>
+    </tr>`).join("")}
+    </tbody></table>
+    <h2 style="margin:16px 0">Total (excludes booking items): ${rs(total)}</h2>
+    <button class="btn" onclick="nav('#/checkout')">Proceed to Order</button>`}
+  </div>`);
+}
+
+function cartQty(key,d,max){const c=cart();let v=(c[key]||0)+d;if(v<=0){delete c[key]}else{if(max&&v>max)v=max;c[key]=v}saveCart(c);render();}
+function cartRemove(key){const c=cart();delete c[key];saveCart(c);render();}
+
+function viewCheckout(){
+  const items = validCartItems();
+  if(items.length===0) return layout(`<div class="sec wrap">Your cart is empty. <a href="#/products">Browse products</a></div>`);
+  const total = items.filter(i=>i.mode==='order').reduce((s,i)=>s+i.prod.price*i.qty,0);
+  return layout(`<div class="sec wrap">
+    <h1>Order Details</h1>
+    <div class="notice">📍 Customer will collect the order from the shop.</div>
+    <div class="formgrid">
+      <label class="full">Customer Name<input id="cname" placeholder="Your name"></label>
+      <label class="full">Mobile Number<input id="cmobile" placeholder="10-digit mobile"></label>
+      <label class="full">Village<input id="cvillage" placeholder="Your village"></label>
+      <label class="full">Payment Preference
+        <select id="cpayment">
+          <option value="Cash on Collection">Cash on Collection (pay at shop)</option>
+          <option value="PhonePe">PhonePe</option>
+          <option value="Google Pay">Google Pay</option>
+          <option value="Other UPI">Other UPI</option>
+        </select>
+      </label>
+    </div>
+    <div class="notice">Payment is settled directly at the shop when you collect your order — this only tells the shop which method you plan to use. No online payment is processed here.</div>
+    <h2 style="margin:16px 0 8px">Order Summary</h2>
+    <table><thead><tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr></thead><tbody>
+    ${items.map(i=>`<tr><td>${esc(i.prod.name)} (${esc(i.prod.pack)})${i.mode==='book'?' — BOOKING':''}</td><td>${i.qty}</td><td>${rs(i.prod.price)}</td><td>${i.mode==='order'?rs(i.prod.price*i.qty):'To confirm'}</td></tr>`).join("")}
+    </tbody></table>
+    <h2 style="margin:14px 0">Total (excludes booking items): ${rs(total)}</h2>
+    <button class="btn" id="confirmOrderBtn" onclick="confirmOrder()">Confirm Order</button>
+  </div>`);
+}
+
+async function confirmOrder(){
+  const name=document.getElementById('cname').value.trim();
+  const mobile=document.getElementById('cmobile').value.trim();
+  const village=document.getElementById('cvillage').value.trim();
+  const payment=document.getElementById('cpayment').value;
+  if(!name||!village||!/^\d{10}$/.test(mobile)){alert("Please enter your name, village, and a valid 10-digit mobile number.");return;}
+  const c=cart(); const p=products();
+  const items=[]; let total=0;
+  for(const key in c){
+    const {id,mode}=ckeyParse(key);
+    const prod=p.find(x=>String(x.id)===String(id)); if(!prod) continue;
+    if(mode==='order'){
+      const qty=Math.min(c[key],prod.stock);
+      if(qty<=0) continue;
+      items.push({productId:id,name:prod.name,pack:prod.pack,price:prod.price,qty,subtotal:prod.price*qty,mode:'order'});
+      total+=prod.price*qty;
+    } else {
+      const qty=c[key]; if(qty<=0) continue;
+      items.push({productId:id,name:prod.name,pack:prod.pack,price:prod.price,qty,subtotal:0,mode:'book'});
+    }
+  }
+  if(items.length===0){alert("Items are no longer in stock. Please update your cart.");saveCart({});render();return;}
+
+  const btn = document.getElementById('confirmOrderBtn');
+  if(btn) { btn.disabled = true; btn.textContent = 'Placing Order...'; }
+
+  try {
+    const res = await apiFetch('/api/orders', {
+      method: 'POST',
+      body: JSON.stringify({ name, mobile, village, payment, items })
+    });
+    const json = await res.json();
+    if(res.ok && json.id){
+      const createdOrder = json;
+      STATE.latestOrder = createdOrder;
+      if (Array.isArray(STATE.orders)) {
+        STATE.orders.unshift(createdOrder);
+      }
+      saveCart({});
+      await loadStoreData(true);
+      nav('#/confirmation/'+createdOrder.id.replace('#',''));
+    } else {
+      alert(json.error || 'Failed to place order. Please try again.');
+      if(btn) { btn.disabled = false; btn.textContent = 'Confirm Order'; }
+    }
+  } catch(err){
+    console.error('Order error:', err);
+    alert('Failed to connect to the backend server to submit order.');
+    if(btn) { btn.disabled = false; btn.textContent = 'Confirm Order'; }
+  }
+}
+
+function viewConfirmation(m){
+  const idRaw = m[1];
+  let order = (STATE.latestOrder && STATE.latestOrder.id.replace('#','')===idRaw)
+    ? STATE.latestOrder
+    : orders().find(o=>o.id.replace('#','')===idRaw);
+  if(!order) return layout(`<div class="sec wrap">Order #${esc(idRaw)} confirmed.<br><br><a href="#/products">&larr; Continue shopping</a></div>`);
+  const s=settings();
+  let lines=[`🌱 ${(s.shopName||CONFIG.SHOP_NAME).toUpperCase()}`,'','🛒 NEW ORDER','',`Order ID: ${order.id}`,'','Customer Details:',`Name: ${order.name}`,`Phone: ${order.mobile}`,`Village: ${order.village}`,`Preferred Payment: ${order.payment||'Cash on Collection'}`,'','Order Details:',''];
+  order.items.forEach((it,i)=>{
+    if(it.mode==='book'){
+      lines.push(`${i+1}. [BOOKING] ${it.name}`,`Pack Size: ${it.pack}`,`Quantity: ${it.qty}`,`Please confirm availability & price`,'');
+    } else {
+      lines.push(`${i+1}. ${it.name}`,`Pack Size: ${it.pack}`,`Quantity: ${it.qty}`,`Price: ${rs(it.price)}`,`Subtotal: ${rs(it.subtotal)}`,'');
+    }
+  });
+  lines.push('--------------------',`Total: ${rs(order.total)}`,'','📍 Customer will collect the order from the shop.','No home delivery.');
+  const url = `https://wa.me/${s.whatsapp||CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+  const isOnline = order.payment && order.payment!=='Cash on Collection';
+  let payBlock='';
+  if(isOnline && order.total>0){
+    if(s.upiId){
+      const upiUrl = `upi://pay?pa=${encodeURIComponent(s.upiId)}&pn=${encodeURIComponent(s.shopName||CONFIG.SHOP_NAME)}&am=${order.total}&cu=INR&tn=${encodeURIComponent('Order '+order.id)}`;
+      payBlock = `<button class="btn" style="margin-bottom:10px" onclick="openWA('${upiUrl.replace(/'/g,"%27")}')">Pay ${rs(order.total)} via ${esc(order.payment)}</button><br>`;
+    } else {
+      payBlock = `<div class="notice">The shop hasn't set up a UPI ID yet — please pay in cash when you collect your order.</div>`;
+    }
+  }
+  return layout(`<div class="sec wrap">
+    <h1>Order Placed — ${order.id}</h1>
+    <p class="muted">Send this order to the shop on WhatsApp to confirm.</p>
+    ${payBlock}
+    <button class="btn ${isOnline?'outline':''}" onclick="openWA('${url.replace(/'/g,"%27")}')">Send Order on WhatsApp</button>
+    <p class="muted" style="margin-top:16px">📍 Collect your order from the shop.</p>
+    <a href="#/products" style="display:inline-block;margin-top:16px">&larr; Continue shopping</a>
+  </div>`);
+}
+function openWA(url){
+  window.location.href = url;
+}
+
+function viewContact(){
+  const s=settings();
+  const heroSrc = resolveImgUrl(s.heroImage);
+  return layout(`<div class="sec wrap">
+    <h1>Contact & Shop Information</h1>
+    ${heroSrc?`<img src="${esc(heroSrc)}" style="width:100%;max-height:260px;object-fit:cover;border-radius:8px;margin:12px 0">`:''}
+    <h2 style="margin-top:4px">${esc(s.shopName||CONFIG.SHOP_NAME)}</h2>
+    <p class="muted" style="margin:8px 0">${esc(s.address||CONFIG.SHOP_ADDRESS)}</p>
+    <div class="notice">No Home Delivery — Customer Collection from Shop only.</div>
+    <div class="row">
+      <button class="btn" onclick="confirmCall()">📞 Call Us</button>
+      <a class="btn outline" href="${esc(s.mapLink||CONFIG.SHOP_MAP_LINK)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+    </div>
+  </div>`);
+}
+
+/* ---------- admin views ---------- */
+function adminSide(active){
+  const items=[["dashboard","Dashboard"],["products","Products"],["orders","Orders"],["settings","Settings"]];
+  return `<div class="side">
+    ${items.map(([k,l])=>`<a class="${active===k?'active':''}" href="#/admin/${k}">${l}</a>`).join("")}
+    <a onclick="adminLogout()" style="cursor:pointer">Logout</a>
+  </div>`;
+}
+function adminWrap(active,inner){
+  return header()+`<main><div class="admin"><nav class="side">${adminSide(active).replace('<div class="side">','').replace('</div>','')}</nav><div class="sec">${inner}</div></div></main>`+footer();
+}
+
+function viewAdminLogin(){
+  if(isAdmin()){nav('#/admin/dashboard');return '';}
+  const s=settings();
+  const logoSrc = resolveImgUrl(s.logo);
+  const logoBlock = logoSrc?`<img src="${esc(logoSrc)}" style="width:88px;height:88px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 14px;border:2px solid var(--wheat)">`:'';
+  return layout(`<div class="sec wrap" style="max-width:360px">
+    ${logoBlock}
+    <h1 style="text-align:center">Admin Login</h1>
+    <div class="formgrid" style="grid-template-columns:1fr">
+      <label>Username<input id="au" onkeydown="if(event.key==='Enter')doAdminLogin()"></label>
+      <label>Password<div style="display:flex;gap:6px">
+        <input id="ap" type="password" style="flex:1" onkeydown="if(event.key==='Enter')doAdminLogin()">
+        <button type="button" class="btn outline" onclick="togglePwd('ap',this)">👁️ Show</button>
+      </div></label>
+    </div>
+    <button class="btn" style="margin-top:12px" onclick="doAdminLogin()">Login</button>
+    <p id="aerr" style="color:var(--bad);margin-top:8px"></p>
+  </div>`);
+}
+
+async function doAdminLogin(){
+  const u=document.getElementById('au').value.trim();
+  const p=document.getElementById('ap').value;
+  const errEl=document.getElementById('aerr');
+  if(!u || !p){ if(errEl) errEl.textContent='Please enter both username and password.'; return; }
+  try {
+    const res = await apiFetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: u, password: p })
+    });
+    const json = await res.json();
+    if(res.ok && json.token){
+      sessionStorage.setItem('sa_token', json.token);
+      sessionStorage.setItem('sa_admin_in', '1');
+      sessionStorage.setItem('sa_admin_user', json.user.username);
+      nav('#/admin/dashboard');
+    } else {
+      if(errEl) errEl.textContent = json.error || 'Invalid username or password.';
+    }
+  } catch(err){
+    if(errEl) errEl.textContent = 'Cannot connect to backend server. Make sure it is running.';
+  }
+}
+
+function adminLogout(){
+  sessionStorage.removeItem('sa_token');
+  sessionStorage.removeItem('sa_admin_in');
+  sessionStorage.removeItem('sa_admin_user');
+  nav('#/admin/login');
+}
+function guard(){if(!isAdmin()){nav('#/admin/login');return false} return true;}
+
+function viewAdminDashboard(){
+  if(!guard())return '';
+  const p=products();const o=orders();
+  const inS=p.filter(x=>x.stock>0).length, outS=p.length-inS;
+  return adminWrap('dashboard',`<h1>Dashboard</h1>
+    <div class="row">
+      <div class="stat">Total Products<b>${p.length}</b></div>
+      <div class="stat">Total Orders<b>${o.length}</b></div>
+      <div class="stat">In Stock<b>${inS}</b></div>
+      <div class="stat">Out of Stock<b>${outS}</b></div>
+    </div>
+    <div class="row" style="margin-top:20px">
+      <button class="btn" onclick="nav('#/admin/products')">Manage Products</button>
+      <button class="btn outline" onclick="nav('#/admin/orders')">View Orders</button>
+      <button class="btn outline" onclick="nav('#/admin/settings')">Shop & Login Settings</button>
+    </div>`);
+}
+
+function viewAdminSettings(){
+  if(!guard())return '';
+  const s=settings();
+  const heroSrc = resolveImgUrl(s.heroImage);
+  const logoSrc = resolveImgUrl(s.logo);
+  const adminUser = sessionStorage.getItem('sa_admin_user') || 'admin';
+  return adminWrap('settings',`<h1>Settings</h1>
+    <h2 style="margin:16px 0 8px">Shop Details</h2>
+    <div class="formgrid">
+      <label class="full">Shop Name<input id="s_name" value="${esc(s.shopName||'')}"></label>
+      <label>Call Button Number<input id="s_phone" value="${esc(s.phone||'')}" placeholder="digits only, country code first"></label>
+      <label>WhatsApp Order Number<input id="s_wa" value="${esc(s.whatsapp||'')}" placeholder="digits only, country code first"></label>
+      <label class="full">Shop Address<input id="s_addr" value="${esc(s.address||'')}"></label>
+      <label class="full">Google Maps Link (for the "Open in Google Maps" button)<input id="s_map" value="${esc(s.mapLink||'')}" placeholder="https://maps.google.com/..."></label>
+      <label class="full">Shop UPI ID (for PhonePe/Google Pay/Paytm payments)<input id="s_upi" value="${esc(s.upiId||'')}" placeholder="e.g. shopname@okhdfcbank"></label>
+      <label class="full">Shop Photo (shown on Home page)
+        <input type="file" accept="image/*" onchange="pickImage(this,'s_img_prev','s_img','hero')">
+        <div id="s_img_prev" style="margin-top:6px">${heroSrc?`<img src="${esc(heroSrc)}" style="max-width:160px;max-height:160px;border-radius:6px">`:''}</div>
+        <input type="hidden" id="s_img" value="${esc(s.heroImage||'')}">
+      </label>
+      <label class="full">Shop Logo / Profile Picture (shown at top of every page)
+        <input type="file" accept="image/*" onchange="pickImage(this,'s_logo_prev','s_logo','logo')">
+        <div id="s_logo_prev" style="margin-top:6px">${logoSrc?`<img src="${esc(logoSrc)}" style="max-width:120px;max-height:120px;border-radius:6px">`:''}</div>
+        <input type="hidden" id="s_logo" value="${esc(s.logo||'')}">
+      </label>
+    </div>
+    <button class="btn" style="margin-top:10px" onclick="saveShopSettings()">Save Shop Details</button>
+    <p id="shopmsg" class="muted" style="margin-top:6px"></p>
+
+    <h2 style="margin:26px 0 8px">Admin Profile & Login</h2>
+    <div class="formgrid">
+      <label>Username<input id="new_u" value="${esc(adminUser)}"></label>
+      <label>New Password<div style="display:flex;gap:6px">
+        <input id="new_p" type="password" style="flex:1" placeholder="Leave blank to keep current">
+        <button type="button" class="btn outline" onclick="togglePwd('new_p',this)">👁️ Show</button>
+      </div></label>
+    </div>
+    <button class="btn" style="margin-top:10px" onclick="updateAdminCreds()">Save Login Settings</button>
+    <p id="credmsg" class="muted" style="margin-top:6px"></p>`);
+}
+
+async function saveShopSettings(){
+  const val=id=>document.getElementById(id).value.trim();
+  const msgEl = document.getElementById('shopmsg');
+  if(msgEl) msgEl.textContent='Saving to server...';
+  try {
+    const res = await apiFetch('/api/settings', {
+      method: 'PUT',
+      authRequired: true,
+      body: JSON.stringify({
+        shopName:val('s_name'), phone:val('s_phone'), whatsapp:val('s_wa'),
+        address:val('s_addr'), mapLink:val('s_map'), upiId:val('s_upi'),
+        heroImage:val('s_img'), logo:val('s_logo')
+      })
+    });
+    const json = await res.json();
+    if(res.ok){
+      STATE.settings = json;
+      if(msgEl) msgEl.textContent='Saved. Changes are live across all devices immediately.';
+      setTimeout(()=>render(), 800);
+    } else {
+      alert(json.error || 'Failed to save settings.');
+      if(msgEl) msgEl.textContent='';
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+    if(msgEl) msgEl.textContent='';
+  }
+}
+
+async function updateAdminCreds(){
+  const u=document.getElementById('new_u').value.trim();
+  const p=document.getElementById('new_p').value;
+  const msgEl=document.getElementById('credmsg');
+  if(!u){alert('Username cannot be empty.');return;}
+  const curP = prompt("Enter your current admin password to confirm change:");
+  if(!curP) return;
+  try {
+    const res = await apiFetch('/api/auth/profile', {
+      method: 'PUT',
+      authRequired: true,
+      body: JSON.stringify({ currentPassword: curP, newUsername: u, newPassword: p || null })
+    });
+    const json = await res.json();
+    if(res.ok){
+      if(msgEl) msgEl.textContent='Saved. Password/Username updated in database.';
+      sessionStorage.setItem('sa_admin_user', u);
+    } else {
+      alert(json.error || 'Failed to update credentials.');
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+  }
+}
+
+function viewAdminProducts(){
+  if(!guard())return '';
+  const p=products();
+  return adminWrap('products',`
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h1>Products</h1><button class="btn" onclick="nav('#/admin/products/new')">+ Add Product</button>
+    </div>
+    <table style="margin-top:12px"><thead><tr><th></th><th>Name</th><th>Category</th><th>Brand</th><th>Pack</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead><tbody>
+    ${p.map(x=>{
+      const imgSrc = resolveImgUrl(x.image);
+      return `<tr>
+      <td>${imgSrc?`<img src="${esc(imgSrc)}" style="width:36px;height:36px;object-fit:cover;border-radius:4px">`:`<span style="font-size:1.3rem">${ICON[x.category]||"📦"}</span>`}</td>
+      <td>${esc(x.name)}</td><td>${esc(x.category)}</td><td>${esc(x.brand)}</td><td>${esc(x.pack)}</td><td>${rs(x.price)}</td>
+      <td>${x.stock}</td>
+      <td><span class="badge ${x.stock>0?'in':'out'}">${x.stock>0?'In Stock':'Out of Stock'}</span></td>
+      <td>
+        <button class="btn outline" onclick="nav('#/admin/products/edit/${x.id}')">Edit</button>
+        <button class="btn outline" onclick="adjustStock('${x.id}')">Adjust Stock</button>
+        <button class="btn bad" onclick="deleteProduct('${x.id}')">Delete</button>
+      </td>
+    </tr>`;
+    }).join("")}
+    </tbody></table>`);
+}
+
+async function adjustStock(id){
+  const prod=products().find(x=>String(x.id)===String(id));
+  if(!prod) return;
+  const v=prompt(`Current stock of "${prod.name}" is ${prod.stock}.\nEnter change (e.g. 10 or -5), or type "=20" to set exactly:`);
+  if(v===null) return;
+  let nv;
+  if(v.trim().startsWith('=')) nv=+v.trim().slice(1);
+  else nv=prod.stock + (+v);
+  if(isNaN(nv)){alert('Invalid number');return;}
+  nv=Math.max(0,nv);
+  try {
+    const res = await apiFetch(`/api/products/${encodeURIComponent(id)}/stock`, {
+      method: 'PATCH',
+      authRequired: true,
+      body: JSON.stringify({ stock: nv })
+    });
+    if(res.ok){
+      prod.stock = nv;
+      render();
+    } else {
+      const err = await res.json();
+      alert(err.error || 'Failed to update stock.');
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+  }
+}
+
+async function deleteProduct(id){
+  if(!confirm("Are you sure you want to delete this product?"))return;
+  try {
+    const res = await apiFetch(`/api/products/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      authRequired: true
+    });
+    if(res.ok){
+      STATE.products = STATE.products.filter(x=>String(x.id)!==String(id));
+      render();
+    } else {
+      const err = await res.json();
+      alert(err.error || 'Failed to delete product.');
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+  }
+}
+
+function viewAdminProductForm(m){
+  if(!guard())return '';
+  const editing = m[1]?products().find(x=>String(x.id)===String(m[1])):null;
+  const v = editing||{name:"",category:CATS[0],brand:"",pack:"",price:"",rating:4.5,stock:0,desc:"",image:"",bookable:false};
+  const imgSrc = resolveImgUrl(v.image);
+  return adminWrap('products',`<h1>${editing?'Edit':'Add'} Product</h1>
+    <div class="formgrid">
+      <label class="full">Product Name<input id="f_name" value="${esc(v.name)}"></label>
+      <label>Category<select id="f_cat">${CATS.map(c=>`<option ${v.category===c?'selected':''}>${c}</option>`).join("")}</select></label>
+      <label>Brand<input id="f_brand" value="${esc(v.brand)}"></label>
+      <label>Pack Size<input id="f_pack" placeholder="e.g. 45 KG" value="${esc(v.pack)}"></label>
+      <label>Price (₹)<input id="f_price" type="number" value="${v.price}"></label>
+      <label>Rating<input id="f_rating" type="number" step="0.1" min="0" max="5" value="${v.rating}"></label>
+      <label>Stock Quantity<input id="f_stock" type="number" value="${v.stock}"></label>
+      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="f_bookable" ${v.bookable?'checked':''} style="width:auto"> Allow customers to Book this item (even when in stock)</label>
+      <label class="full">Product Image
+        <input type="file" accept="image/*" onchange="pickImage(this,'f_image_prev','f_image','prod')">
+        <div id="f_image_prev" style="margin-top:6px">${imgSrc?`<img src="${esc(imgSrc)}" style="max-width:160px;max-height:160px;border-radius:6px">`:''}</div>
+        <input type="hidden" id="f_image" value="${esc(v.image||'')}">
+      </label>
+      <label class="full">Description<textarea id="f_desc" rows="3">${esc(v.desc||v.description||"")}</textarea></label>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="saveProductForm(${editing?`'${editing.id}'`:'null'})">${editing?'Save Changes':'Add Product'}</button>
+      <button class="btn outline" onclick="nav('#/admin/products')">Cancel</button>
+    </div>`);
+}
+
+async function saveProductForm(id){
+  const val=s=>document.getElementById(s).value;
+  const data={
+    name:val('f_name').trim(),category:val('f_cat'),brand:val('f_brand').trim(),pack:val('f_pack').trim(),
+    price:+val('f_price')||0,rating:+val('f_rating')||0,stock:Math.max(0,+val('f_stock')||0),desc:val('f_desc').trim(),
+    image:val('f_image').trim(), bookable:document.getElementById('f_bookable').checked
+  };
+  if(!data.name){alert('Product name is required.');return;}
+  try {
+    let res;
+    if(id){
+      res = await apiFetch(`/api/products/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        authRequired: true,
+        body: JSON.stringify(data)
+      });
+    } else {
+      res = await apiFetch('/api/products', {
+        method: 'POST',
+        authRequired: true,
+        body: JSON.stringify(data)
+      });
+    }
+    const json = await res.json();
+    if(res.ok){
+      await loadStoreData(true);
+      nav('#/admin/products');
+    } else {
+      alert(json.error || 'Failed to save product.');
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+  }
+}
+
+function viewAdminOrders(){
+  if(!guard())return '';
+  const o=orders().slice();
+  return adminWrap('orders',`<h1>Orders</h1>
+    <table><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Village</th><th>Payment</th><th>Total</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody>
+    ${o.map(x=>`<tr><td>${x.id}</td><td>${esc(x.name)}</td><td>${esc(x.mobile)}</td><td>${esc(x.village)}</td><td>${esc(x.payment||'-')}</td><td>${rs(x.total)}</td>
+    <td><span class="badge ${x.status==='Completed'?'in':'out'}">${esc(x.status||'Pending')}</span></td>
+    <td>${x.dt}</td>
+    <td><button class="btn outline" onclick="nav('#/admin/orders/${x.id.replace('#','')}')">View</button></td></tr>`).join("")||'<tr><td colspan="9" class="muted">No orders yet.</td></tr>'}
+    </tbody></table>`);
+}
+
+function viewAdminOrderDetails(m){
+  if(!guard())return '';
+  const order=orders().find(o=>o.id.replace('#','')===m[1]);
+  if(!order) return adminWrap('orders','Order not found.');
+  return adminWrap('orders',`<a href="#/admin/orders">&larr; Back</a>
+    <h1>${order.id}</h1>
+    <p>${esc(order.name)} · ${esc(order.mobile)} · ${esc(order.village)}</p>
+    <p class="muted">${order.dt} · Preferred payment: ${esc(order.payment||'Cash on Collection')}</p>
+    <p>Status: <b>${esc(order.status||'Pending')}</b></p>
+    <table style="margin-top:12px"><thead><tr><th>Product</th><th>Pack</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr></thead><tbody>
+    ${order.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${esc(i.pack)}</td><td>${i.qty}</td><td>${rs(i.price)}</td><td>${rs(i.subtotal)}</td></tr>`).join("")}
+    </tbody></table>
+    <h2 style="margin-top:12px">Total: ${rs(order.total)}</h2>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" onclick="updateOrderStatus('${order.id}','Completed')">Mark as Completed</button>
+      <button class="btn outline" onclick="updateOrderStatus('${order.id}','Pending')">Mark as Pending</button>
+    </div>`);
+}
+
+async function updateOrderStatus(id, status){
+  try {
+    const res = await apiFetch(`/api/orders/${encodeURIComponent(id)}/status`, {
+      method: 'PATCH',
+      authRequired: true,
+      body: JSON.stringify({ status })
+    });
+    if(res.ok){
+      await loadOrders();
+      render();
+    } else {
+      const err = await res.json();
+      alert(err.error || 'Failed to update order status.');
+    }
+  } catch(err){
+    alert('Failed to connect to backend.');
+  }
+}
+
+/* ---------- router ---------- */
+const routes=[
+  [/^\/?$|^\/home$/, ()=>viewHome()],
+  [/^\/products$/, (m,q)=>viewProducts(q)],
+  [/^\/product\/(.+)$/, m=>viewProductDetails(m)],
+  [/^\/cart$/, ()=>viewCart()],
+  [/^\/checkout$/, ()=>viewCheckout()],
+  [/^\/confirmation\/(.+)$/, m=>viewConfirmation(m)],
+  [/^\/contact$/, ()=>viewContact()],
+  [/^\/admin\/login$/, ()=>viewAdminLogin()],
+  [/^\/admin\/dashboard$/, ()=>viewAdminDashboard()],
+  [/^\/admin\/products$/, ()=>viewAdminProducts()],
+  [/^\/admin\/products\/new$/, ()=>viewAdminProductForm([null,null])],
+  [/^\/admin\/products\/edit\/(.+)$/, m=>viewAdminProductForm(m)],
+  [/^\/admin\/orders$/, ()=>viewAdminOrders()],
+  [/^\/admin\/orders\/(.+)$/, m=>viewAdminOrderDetails(m)],
+  [/^\/admin\/settings$/, ()=>viewAdminSettings()],
+];
+
+async function render(){
+  const raw=(location.hash||'#/home').slice(1);
+  const [path,qs]=raw.split('?');
+  const params=new URLSearchParams(qs||'');
+  
+  if(!STATE.loaded){
+    await loadStoreData();
+  }
+  if(path.startsWith('/admin') && isAdmin()){
+    await loadOrders();
+  }
+
+  for(const [re,fn] of routes){
+    const m=path.match(re);
+    if(m){
+      const html=fn(m,params);
+      if(html){
+        document.getElementById('app').innerHTML=html;
+        window.scrollTo(0,0);
+      }
+      return;
+    }
+  }
+  document.getElementById('app').innerHTML=viewHome();
+}
+
+window.addEventListener('hashchange', () => { render(); });
+window.addEventListener('load', () => { loadStoreData().then(() => render()); });
+render();
+</script>
+</body>
+</html>
+
+
+
